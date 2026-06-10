@@ -1,0 +1,12 @@
+.vscode/
+__pycache__/
+*.pyc
+*.log
+
+public/uploads/
+
+public/models/face-api.js-models-master/uncompressed/
+public/models/face-api.js-models-master/tiny_yolov2/
+public/models/face-api.js-models-master/face_recognition/
+public/models/face-api.js-models-master/ssd_mobilenetv1/
+public/models/face-api.js-models-master/mtcnn/
