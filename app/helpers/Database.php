@@ -5,7 +5,7 @@ class Database {
         if (self::$pdo === null) {
             $cfg = include __DIR__ . '/../config/config.php';
             $db = $cfg['db'];
-            $dsn = "mysql:host={$db['host']};dbname={$db['name']};charset=utf8mb4";
+            $dsn = "mysql:host={$db['host']};port={$db['port']};dbname={$db['name']};charset=utf8mb4";
             self::$pdo = new PDO($dsn, $db['user'], $db['pass'], [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
