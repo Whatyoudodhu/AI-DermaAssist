@@ -17,12 +17,15 @@ class AiService {
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $this->apiUrl);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 120);
-        curl_setopt($ch, CURLOPT_USERAGENT, 'AI-DermaAssist/1.0');
-        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Accept: application/json']);
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_TIMEOUT, 120);
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    'Accept: application/json',
+    'User-Agent: Mozilla/5.0 AI-DermaAssist'
+]);
 
         $resp = curl_exec($ch);
         $err = curl_error($ch);
