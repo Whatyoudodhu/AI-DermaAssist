@@ -8,7 +8,9 @@ class Database {
             $dsn = "mysql:host={$db['host']};dbname={$db['name']};charset=utf8mb4";
             self::$pdo = new PDO($dsn, $db['user'], $db['pass'], [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                PDO::MYSQL_ATTR_SSL_CA => null,
+                PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false
             ]);
         }
         return self::$pdo;
