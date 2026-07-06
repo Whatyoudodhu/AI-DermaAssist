@@ -12,6 +12,7 @@ class AiService {
         curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_TIMEOUT, 120);
+        curl_setopt($ch, CURLOPT_USERAGENT, 'AI-DermaAssist/1.0');
         $resp = curl_exec($ch);
         $err = curl_error($ch);
         curl_close($ch);
