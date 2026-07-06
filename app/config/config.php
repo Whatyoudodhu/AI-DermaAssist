@@ -8,7 +8,7 @@ return [
         'pass' => getenv('DB_PASS') ?: ''
     ],
     'flask_api' => [
-        'url' => getenv('FLASK_API_URL') ?: 'http://127.0.0.1:5000/predict'
+        'url' => getenv('FLASK_API_URL') ?: 'https://ai-dermaassist-flask.onrender.com/predict'
     ],
     'uploads_dir' => __DIR__ . '/../../public/uploads'
 ];
