@@ -32,9 +32,9 @@ class AnalyzeController {
         $result = $this->ai->analyzeImage($path);
 
         if (isset($result['error'])) {
-            echo json_encode(['error' => 'AI Error, unable to analyze image.']);
-            exit;
-        }
+    echo json_encode($result); // TEMP: show real error for debugging
+    exit;
+}
 
         // Normalize scores to lowercase keys
         $scaled_scores = [];
