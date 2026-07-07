@@ -4,17 +4,19 @@ class AiService {
     public function __construct($apiUrl) { $this->apiUrl = $apiUrl; }
     public function analyzeImage($filePath){
         if (!file_exists($filePath)) return ['error'=>'file not found'];
-        $cfile = new CURLFile($filePath);
-        $post = ['image'=>$cfile];
+        
+        $imageData = base64_encode(file_get_contents($filePath));
+        $payload = json_encode(['image' => $imageData]);
+        
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $this->apiUrl);
         curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_TIMEOUT, 120);
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
-            'User-Agent: Mozilla/5.0 (compatible; AI-DermaAssist/1.0)',
-            'Accept: application/json'
+            'Content-Type: application/json',
+            'User-Agent: Mozilla/5.0 (compatible; AI-DermaAssist/1.0)'
         ]);
         $resp = curl_exec($ch);
         $err = curl_error($ch);
